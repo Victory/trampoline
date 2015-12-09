@@ -8,7 +8,7 @@ public class SumOfThunk extends Thunk {
         private Integer sum;
 
         SumOfThunkResult(Integer sum) {
-            this.sum = sum;
+            this.sum = sum + result;
         }
 
         @Override
@@ -29,7 +29,6 @@ public class SumOfThunk extends Thunk {
         }
         result += max;
         max -= 1;
-        Thunk t = new Thunk(new SumOfThunkResult(result));
-        return cont(t);
+        return cont(this);
     }
 }
