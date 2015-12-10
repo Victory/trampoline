@@ -5,15 +5,13 @@ public class SumOfThunk extends Thunk {
     private Integer max = 10;
 
     class SumOfThunkResult implements ThunkResult {
-        private Integer sum;
-
-        SumOfThunkResult(Integer sum) {
-            this.sum = sum + result;
+        SumOfThunkResult(Integer lastResult) {
+            result += lastResult;
         }
 
         @Override
         public Object getResult() {
-            return sum;
+            return result;
         }
     }
 
