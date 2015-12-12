@@ -13,9 +13,17 @@ public class Node {
 
     public void add (Node n) {
         if (n.getValue() > getValue()) {
-            lhs = n;
+            if (lhs == null) {
+                lhs = n;
+            } else {
+                lhs.add(n);
+            }
         } else {
-            rhs = n;
+            if (rhs == null) {
+                rhs = n;
+            } else {
+                rhs.add(n);
+            }
         }
     }
     public Integer getValue() {
