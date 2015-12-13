@@ -1,5 +1,7 @@
 package trampoline;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Main {
 
     public static void main(String args[]) {
@@ -10,5 +12,20 @@ public class Main {
         System.out.println(et.tramp(et).getResult());
         et = new EvenThunk(10);
         System.out.println(et.tramp(et).getResult());
+
+        testNodes();
+    }
+
+    public static void testNodes() {
+        int ii;
+        int rnd;
+        ThreadLocalRandom rng = ThreadLocalRandom.current();
+        Node root = new Node(0);
+        Node n;
+        for (ii = 0; ii < 10; ii++) {
+            rnd = rng.nextInt(20);
+            n = new Node(rnd);
+            root.add(n);
+        }
     }
 }
