@@ -11,20 +11,38 @@ public class Node {
         this.value = value;
     }
 
-    public void add (Node n) {
+    public void contAdd (Node parent, Node child) {
+        parent.add(child);
+    }
+
+    public Boolean hasToAdd;
+
+    public void bounce (Node child) {
+        Node tempParent;
+        Node lastParent =  this;
+        Node parent = add(child);
+        while (parent != lastParent) {
+            tempParent = parent;
+            parent = tempParent.add(child);
+            lastParent = tempParent;
+        }
+    }
+
+    public Node add (Node n) {
         if (n.getValue() > getValue()) {
             if (lhs == null) {
                 lhs = n;
             } else {
-                lhs.add(n);
+                return lhs;
             }
         } else {
             if (rhs == null) {
                 rhs = n;
             } else {
-                rhs.add(n);
+                return rhs;
             }
         }
+        return this;
     }
     public Integer getValue() {
         return value;

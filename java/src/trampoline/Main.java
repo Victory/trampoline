@@ -14,6 +14,8 @@ public class Main {
         System.out.println(et.tramp(et).getResult());
 
         testNodes();
+
+        System.out.println("Done");
     }
 
     public static void testNodes() {
@@ -25,7 +27,7 @@ public class Main {
         for (ii = 0; ii < 10; ii++) {
             rnd = rng.nextInt(20);
             n = new Node(rnd);
-            root.add(n);
+            root.bounce(n);
         }
     }
 }
