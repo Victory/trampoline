@@ -11,10 +11,6 @@ public class Node {
         this.value = value;
     }
 
-    public void contAdd (Node parent, Node child) {
-        parent.innerAdd(child);
-    }
-
     /**
      * returns Node with given value, if not found returns null
      * @param targetValue
