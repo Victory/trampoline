@@ -33,7 +33,7 @@ public class Node {
      * @param targetValue
      * @return
      */
-    public Node innerFind (Integer targetValue) {
+    private Node innerFind (Integer targetValue) {
         if (this.getValue().equals(targetValue)) {
             return this;
         }
@@ -67,7 +67,7 @@ public class Node {
         }
     }
 
-    public Node innerAdd (Node n) {
+    private Node innerAdd (Node n) {
         if (n.getValue() > getValue()) {
             if (lhs == null) {
                 lhs = n;
