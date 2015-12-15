@@ -12,23 +12,51 @@ public class Node {
     }
 
     public void contAdd (Node parent, Node child) {
-        parent.add(child);
+        parent.innerAdd(child);
     }
 
     public Boolean hasToAdd;
 
-    public void bounce (Node child) {
+    /**
+     * returns Node with given value, if not found returns null
+     * @param targetValue
+     * @return
+     */
+    public Node find (Integer targetValue) {
+        if (this.getValue().equals(targetValue)) {
+            return this;
+        }
+
+        if (this.getValue() > targetValue) {
+            if (rhs == null) {
+                return null;
+            }
+            return rhs.find(targetValue);
+        } else {
+            if (lhs == null) {
+                return null;
+            }
+            return lhs.find(targetValue);
+        }
+    }
+
+    /**
+     * adds a node to the tree
+     *
+     * @param child
+     */
+    public void add (Node child) {
         Node tempParent;
         Node lastParent =  this;
-        Node parent = add(child);
+        Node parent = innerAdd(child);
         while (parent != lastParent) {
             tempParent = parent;
-            parent = tempParent.add(child);
+            parent = tempParent.innerAdd(child);
             lastParent = tempParent;
         }
     }
 
-    public Node add (Node n) {
+    public Node innerAdd (Node n) {
         if (n.getValue() > getValue()) {
             if (lhs == null) {
                 lhs = n;
