@@ -11,12 +11,29 @@ public class Node {
         this.value = value;
     }
 
+    public Node find (Integer targetValue) {
+        Node found = this;
+        Node lastFound = found;
+        while (found != null) {
+            found = found.innerFind(targetValue);
+            lastFound = found;
+            if (lastFound == null) {
+                break;
+            }
+            if (lastFound.getValue().equals(targetValue)) {
+                break;
+            }
+        }
+
+        return lastFound;
+    }
+
     /**
      * returns Node with given value, if not found returns null
      * @param targetValue
      * @return
      */
-    public Node find (Integer targetValue) {
+    public Node innerFind (Integer targetValue) {
         if (this.getValue().equals(targetValue)) {
             return this;
         }
@@ -25,12 +42,12 @@ public class Node {
             if (rhs == null) {
                 return null;
             }
-            return rhs.find(targetValue);
+            return rhs;
         } else {
             if (lhs == null) {
                 return null;
             }
-            return lhs.find(targetValue);
+            return lhs;
         }
     }
 

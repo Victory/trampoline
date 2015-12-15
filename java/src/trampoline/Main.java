@@ -25,7 +25,7 @@ public class Main {
         ThreadLocalRandom rng = ThreadLocalRandom.current();
         Node root = new Node(rng.nextInt(20));
         Integer target = -1;
-        for (ii = 0; ii < 10; ii++) {
+        for (ii = 0; ii < 20; ii++) {
             target = rng.nextInt(20);
             Node n = new Node(target);
             root.add(n);
