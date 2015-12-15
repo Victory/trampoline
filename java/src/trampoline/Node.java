@@ -15,8 +15,6 @@ public class Node {
         parent.innerAdd(child);
     }
 
-    public Boolean hasToAdd;
-
     /**
      * returns Node with given value, if not found returns null
      * @param targetValue
