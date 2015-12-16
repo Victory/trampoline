@@ -12,11 +12,11 @@ public class Node {
     }
 
     public void printTree () {
-        if (this.getValue() != null) {
-            System.out.println(this.getValue());
-        }
         if (this.lhs != null) {
             lhs.printTree();
+        }
+        if (this.getValue() != null) {
+            System.out.println(this.getValue());
         }
         if (this.rhs != null) {
             rhs.printTree();
