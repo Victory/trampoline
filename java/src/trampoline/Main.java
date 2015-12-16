@@ -1,5 +1,6 @@
 package trampoline;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
@@ -14,12 +15,35 @@ public class Main {
         System.out.println(et.tramp(et).getResult());
 
         testAddNodes();
-
+        testPrintingTree();
         testFindNodes();
 
         System.out.println("Done");
     }
 
+    public static void testPrintingTree () {
+        int ii = 0;
+        Node root = new Node(0);
+        used.add(0);
+        for (ii = 1; ii < 20; ii++) {
+            Node n = new Node(getNextRandom());
+            root.add(n);
+        }
+        System.out.println("Printing tree");
+        root.printTree();
+        System.out.println("End printing tree");
+    }
+
+    private static ArrayList<Integer> used = new ArrayList<>();
+    private static Integer getNextRandom () {
+        ThreadLocalRandom rng = ThreadLocalRandom.current();
+        Integer next = rng.nextInt(20);
+        while (used.contains(next)) {
+            next = rng.nextInt(20);
+        }
+        used.add(next);
+        return next;
+    }
     public static void testFindNodes() {
         int ii = 0;
         ThreadLocalRandom rng = ThreadLocalRandom.current();

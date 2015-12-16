@@ -11,6 +11,23 @@ public class Node {
         this.value = value;
     }
 
+    public void printTree () {
+        if (this.getValue() != null) {
+            System.out.println(this.getValue());
+        }
+        if (this.lhs != null) {
+            lhs.printTree();
+        }
+        if (this.rhs != null) {
+            rhs.printTree();
+        }
+    }
+
+    /**
+     * find a node, returns null if not found
+     * @param targetValue
+     * @return
+     */
     public Node find (Integer targetValue) {
         Node found = this;
         Node lastFound = found;
