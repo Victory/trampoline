@@ -1,5 +1,7 @@
 package trampoline;
 
+import java.util.ArrayList;
+
 public class Node {
     private Node lhs;
     private Node rhs;
@@ -11,16 +13,73 @@ public class Node {
         this.value = value;
     }
 
+    private class SideAwareNode extends Node {
+        final public String side;
+        public SideAwareNode(Integer value, String side) {
+            super(value);
+            this.side = side;
+        }
+        public boolean isLhs () {
+            return this.side.equals("lhs");
+        }
+        public boolean isRhs () {
+            return !isLhs();
+        }
+    }
+
     public void printTree () {
+        SideAwareNode next = innerPrintTree();
+        ArrayList<Integer> printList = new ArrayList<Integer>();
+        while (next != null) {
+            if (next.isLhs()) {
+                if (next.getValue() != null) {
+                    System.out.println(next.getValue());
+                }
+            } else {
+                if (next.getValue() != null) {
+                    System.out.println(next.getValue());
+                }
+            }
+            next = next.innerPrintTree();
+            /*
+            while (next.isLhs()) {
+                if (next.getValue() != null) {
+                    printList.add(next.getValue());
+                }
+                next = next.innerPrintTree();
+                if (next == null) {
+                    break;
+                }
+            }
+            if (next == null) {
+                break;
+            }
+            while (next.isRhs()) {
+                if (next.getValue() != null) {
+                    printList.add(next.getValue());
+                }
+                next = next.innerPrintTree();
+                if (next == null) {
+                    break;
+                }
+            }
+            */
+        }
+
+        for (Integer val: printList) {
+            System.out.println(val);
+        }
+    }
+
+    public SideAwareNode innerPrintTree () {
         if (this.lhs != null) {
-            lhs.printTree();
+            return new SideAwareNode(lhs.getValue(), "lhs");
         }
-        if (this.getValue() != null) {
-            System.out.println(this.getValue());
-        }
+
         if (this.rhs != null) {
-            rhs.printTree();
+            return new SideAwareNode(rhs.getValue(), "rhs");
         }
+        return null;
     }
 
     /**
