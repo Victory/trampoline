@@ -11,10 +11,18 @@ public class Node {
         this.value = value;
     }
 
+    /**
+     *
+     * @return true iff there is a left hand side node
+     */
     public boolean hasLhs () {
         return lhs != null;
     }
 
+    /**
+     *
+     * @return true iff there is a right hand side node
+     */
     public boolean hasRhs () {
         return rhs != null;
     }
@@ -113,9 +121,5 @@ public class Node {
     }
     public Integer getValue() {
         return value;
-    }
-
-    public void setValue(Integer value) {
-        this.value = value;
     }
 }
