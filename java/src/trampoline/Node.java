@@ -1,8 +1,5 @@
 package trampoline;
 
-import java.util.EmptyStackException;
-import java.util.Stack;
-
 public class Node {
     private Node lhs;
     private Node rhs;
@@ -31,34 +28,6 @@ public class Node {
     }
 
     public void printTree () {
-        Stack<Integer> stack = new Stack<Integer>();
-        Node cur = this;
-
-        while (cur != null) {
-            while (cur.hasLhs()) {
-                stack.push(cur.getValue());
-                cur = cur.innerPrintTree();
-            }
-            try {
-                while (true) {
-                    Integer val = stack.pop();
-                    System.out.println("Val:" + val);
-                }
-            } catch (EmptyStackException e) {}
-            while (cur.hasRhs()) {
-                stack.push(cur.getValue());
-                cur = cur.innerPrintTree();
-            }
-            try {
-                while (true) {
-                    Integer val = stack.pop();
-                    System.out.println("Val:" + val);
-                }
-            } catch (EmptyStackException e) {}
-
-            cur = cur.innerPrintTree();
-        }
-
     }
 
     public Node innerPrintTree () {
