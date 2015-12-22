@@ -34,27 +34,30 @@ public class Node {
         Stack<Integer> stack = new Stack<Integer>();
         Node cur = this;
 
-        while (cur.hasLhs()) {
-            stack.push(cur.getValue());
-            cur = cur.innerPrintTree();
-        }
-        try {
-            while (true) {
-                Integer val = stack.pop();
-                System.out.println("Val:" + val);
+        while (cur != null) {
+            while (cur.hasLhs()) {
+                stack.push(cur.getValue());
+                cur = cur.innerPrintTree();
             }
-        } catch (EmptyStackException e) {}
-        while (cur.hasRhs()) {
-            stack.push(cur.getValue());
-            cur = cur.innerPrintTree();
-        }
-        try {
-            while (true) {
-                Integer val = stack.pop();
-                System.out.println("Val:" + val);
+            try {
+                while (true) {
+                    Integer val = stack.pop();
+                    System.out.println("Val:" + val);
+                }
+            } catch (EmptyStackException e) {}
+            while (cur.hasRhs()) {
+                stack.push(cur.getValue());
+                cur = cur.innerPrintTree();
             }
-        } catch (EmptyStackException e) {}
+            try {
+                while (true) {
+                    Integer val = stack.pop();
+                    System.out.println("Val:" + val);
+                }
+            } catch (EmptyStackException e) {}
 
+            cur = cur.innerPrintTree();
+        }
 
     }
 
