@@ -28,9 +28,10 @@ public class Node {
     }
 
     public void printTree () {
+       innerPrintTree();
     }
 
-    public Node innerPrintTree () {
+    private Node innerPrintTree () {
         if (this.lhs != null) {
             return lhs;
         }
