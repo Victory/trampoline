@@ -3,28 +3,13 @@ package trampoline;
 public class Node {
     private Node lhs;
     private Node rhs;
-
+    private boolean isLhs;
+    private boolean isRhs;
     private Integer value;
 
     public Node(Integer value)
     {
         this.value = value;
-    }
-
-    /**
-     *
-     * @return true iff there is a left hand side node
-     */
-    public boolean hasLhs () {
-        return lhs != null;
-    }
-
-    /**
-     *
-     * @return true iff there is a right hand side node
-     */
-    public boolean hasRhs () {
-        return rhs != null;
     }
 
     public void printTree () {
@@ -122,5 +107,37 @@ public class Node {
 
     public Integer getValue() {
         return value;
+    }
+
+    public boolean isLhs() {
+        return isLhs;
+    }
+
+    public void setLhs(boolean isLhs) {
+        this.isLhs = isLhs;
+    }
+
+    public boolean isRhs() {
+        return isRhs;
+    }
+
+    public void setRhs(boolean isRhs) {
+        this.isRhs = isRhs;
+    }
+
+    /**
+     *
+     * @return true iff there is a left hand side node
+     */
+    public boolean hasLhs () {
+        return lhs != null;
+    }
+
+    /**
+     *
+     * @return true iff there is a right hand side node
+     */
+    public boolean hasRhs () {
+        return rhs != null;
     }
 }
